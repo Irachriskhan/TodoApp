@@ -7,8 +7,13 @@ const {
   updateTask,
   deleteTask,
 } = require("../controllers/task");
+const { verifyUser } = require("../utils/verifyToken.js");
 
-router.route("/").get(getAllTask).post(createTask);
-router.route("/:id").get(getTask).patch(updateTask).delete(deleteTask);
+router.route("/").get(verifyUser, getAllTask).post(verifyUser, createTask);
+router
+  .route("/:id")
+  .get(verifyUser, getTask)
+  .patch(verifyUser, updateTask)
+  .delete(verifyUser, deleteTask);
 
 module.exports = router;
