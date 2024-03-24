@@ -56,7 +56,7 @@ const login = async (req: Request, res: Response) => {
         .json({ success: false, message: "incorrect email or password" });
     }
 
-    const { password, role, ...rest } = user;
+    const { password, role, ...rest } = user; // .__doc
 
     // create jwt token
     const token = jwt.sign(
