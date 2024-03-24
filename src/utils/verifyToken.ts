@@ -32,7 +32,7 @@ const verifyToken = (req: Request, res: Response, next: NextFunction) => {
 
 const verifyUser = (req: Request, res: Response, next: NextFunction) => {
   verifyToken(req, res, () => {
-    if (req.user.id === req.params.id || req.user.role === "admin") {
+    if (req.user.id === req.params.id || req.user.role === "user") {
       next();
     } else {
       return res
